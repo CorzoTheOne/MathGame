@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathGame.Games
+namespace MathGame.Games.Levels
 {
-    public class Game
+    internal class LevelTwo
     {
-
     }
 }
