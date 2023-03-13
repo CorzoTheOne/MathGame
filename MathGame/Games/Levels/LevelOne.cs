@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace MathGame.Games.Levels
 {
+    /// <summary>
+    /// This class is responsible for Level 1 questions
+    /// It contains each function used in level 1 - as well as the packager that 
+    /// is called to add 10 rounds to the play session.
+    /// 
+    /// </summary>
     public class LevelOne : ILevelMaker
     {
         List<Func<int>> _questions;
@@ -69,7 +75,6 @@ namespace MathGame.Games.Levels
             return result;
         }
 
-        // TODO :
         public static int Divide()
         {
             List<int> numbers = new();
@@ -85,6 +90,11 @@ namespace MathGame.Games.Levels
             return result;
         }
 
+        /// <summary>
+        /// Display() - Uses a switch and a StringBuilder to correctly format and display the question.
+        /// </summary>
+        /// <param name="func">string representation of the function fx. "add"</param>
+        /// <param name="numbers">The list with values that are displayed in with correct formatting. </param>
         private static void Display(string func, List<int> numbers)
         {
             string type;
@@ -122,7 +132,11 @@ namespace MathGame.Games.Levels
 
 
         }
-
+        /// <summary>
+        /// PrepareQuestions - Randomly selects functions that return integers to add to the list. 
+        /// Called by Play(). 
+        /// </summary>
+        /// <returns>return a list of 10 functions that return integers.</returns>
         public List<Func<int>> PrepareQuestions()
         {
 

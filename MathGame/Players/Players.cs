@@ -25,5 +25,24 @@ namespace MathGame.Players
             _createTime = DateTime.Now;
         } 
 
+        public static Player SelectPlayer(string name)
+        {
+            List<Player> players = PlayerList.GetPlayers();
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (name == players[i]._name)
+                {
+                    return players[i];               
+                }
+            }
+            return CreatePlayer(name);
+        }
+
+        private static Player CreatePlayer(string name)
+        {
+            Player player = new Player(name);
+            return player; 
+        }
+
     }
 }

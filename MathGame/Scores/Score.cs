@@ -9,7 +9,7 @@ namespace MathGame.Scores
     public class Score
     {
         public int _score = 0;
-        private DateTime _creationTime;
+        private DateTime _creationTime ;
 
         public Score() 
         { 
@@ -27,6 +27,11 @@ namespace MathGame.Scores
         public void ScoreTime()
         {
             _creationTime = DateTime.Now;
+        }
+
+        public (int, DateTime) SetGameStats()
+        {
+            return (_score, _creationTime);
         }
     }
 }

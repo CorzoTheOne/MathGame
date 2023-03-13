@@ -7,7 +7,7 @@ using MathGame;
 
 namespace MathGame.Players
 {
-    public static class PlayerList
+    public class PlayerList
     {
         private static readonly List<Player>? _players;
 
@@ -24,6 +24,12 @@ namespace MathGame.Players
         public static List<Player> GetPlayers()
         {
             return _players;
+        }
+
+        public static void SetPlayers(string name)
+        {
+            Player player = new Player(name);
+            _players.Add(player);
         }
 
         public static void DisplayPlayers()

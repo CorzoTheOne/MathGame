@@ -10,6 +10,5 @@ internal class Program
         LevelOne.Multiply();
         LevelOne.Divide();
 
-        LevelOne.
     }
 }
