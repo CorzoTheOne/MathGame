@@ -1,2 +1,0 @@
-# MathGame
-My C# MathGame

@@ -1,0 +1,15 @@
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\bin\Debug\net6.0\MathGame.exe
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\bin\Debug\net6.0\MathGame.deps.json
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\bin\Debug\net6.0\MathGame.runtimeconfig.json
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\bin\Debug\net6.0\MathGame.dll
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\bin\Debug\net6.0\MathGame.pdb
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.csproj.AssemblyReference.cache
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.AssemblyInfoInputs.cache
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.AssemblyInfo.cs
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.csproj.CoreCompileInputs.cache
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.dll
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\refint\MathGame.dll
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.pdb
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\MathGame.genruntimeconfig.cache
+C:\Users\Zimon\OneDrive\Skrivebord\1PROJECTS\MathGame\MathGame\obj\Debug\net6.0\ref\MathGame.dll
