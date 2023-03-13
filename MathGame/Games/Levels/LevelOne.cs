@@ -9,7 +9,7 @@ namespace MathGame.Games.Levels
 {
     public class LevelOne : ILevelMaker
     {
-        public List<Func<int>> _questions;
+        List<Func<int>> _questions;
 
         public static int Add()
         {
@@ -75,8 +75,8 @@ namespace MathGame.Games.Levels
             List<int> numbers = new();
 
             Random length = new();
-            numbers.Add(length.Next(50, 99));
-            numbers.Add(length.Next(1, 18));
+            numbers.Add(length.Next(50, 101));
+            numbers.Add(length.Next(1, 19));
             Console.WriteLine("Divide without including remainders:\n");
             Display("divide", numbers);
 
@@ -125,7 +125,27 @@ namespace MathGame.Games.Levels
 
         public List<Func<int>> PrepareQuestions()
         {
-            throw new NotImplementedException();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Random selector = new(); 
+                switch (selector.Next(1, 5))
+                {
+                    case 1:
+                        _questions.Add(Add);
+                        break;
+                    case 2:
+                        _questions.Add(Subtract);
+                        break;
+                    case 3: 
+                        _questions.Add(Multiply);
+                        break;
+                    case 4:
+                        _questions.Add(Divide);
+                        break;
+                }
+            }
+            return _questions;
         }
     }
 }

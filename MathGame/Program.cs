@@ -9,5 +9,7 @@ internal class Program
         LevelOne.Add();
         LevelOne.Multiply();
         LevelOne.Divide();
+
+        LevelOne.
     }
 }
