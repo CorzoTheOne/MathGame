@@ -15,8 +15,6 @@ namespace MathGame.Games.Levels
     /// </summary>
     public class LevelOne : ILevelMaker
     {
-        List<Func<int>> _questions;
-
         public static int Add()
         {
             List<int> numbers = new();
@@ -137,9 +135,9 @@ namespace MathGame.Games.Levels
         /// Called by Play(). 
         /// </summary>
         /// <returns>return a list of 10 functions that return integers.</returns>
-        public List<Func<int>> PrepareQuestions()
+        public static List<Func<int>> PrepareQuestions()
         {
-
+            List<Func<int>> _questions = new List<Func<int>>();
             for (int i = 0; i < 10; i++)
             {
                 Random selector = new(); 

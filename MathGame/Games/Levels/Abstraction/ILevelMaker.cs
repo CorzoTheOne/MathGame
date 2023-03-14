@@ -10,7 +10,11 @@ namespace MathGame.Games.Levels.Abstraction
     {
         //public List<Func<int>>
 
-        List<Func<int>> PrepareQuestions();
+        static List<Func<int>> PrepareQuestions() 
+        {
+            List<Func<int>> result = default;
+            return result;
+        }
 
     }
 }

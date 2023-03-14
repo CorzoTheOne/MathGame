@@ -13,13 +13,18 @@ namespace MathGame.Games
         public int _level;
 
         public Score _score; 
-
+        /// <summary>
+        /// Selects/Creates the player
+        /// Creates an instance of the play session. 
+        /// </summary>
         public void StartGame()
         {
             Console.WriteLine("Welcome to the game!\n");
             Console.WriteLine("Please enter your name:");
             string player_name = Console.ReadLine();
             Player player = Player.SelectPlayer(player_name);
+
+            Play play = new Play(player);
 
         }
     }
