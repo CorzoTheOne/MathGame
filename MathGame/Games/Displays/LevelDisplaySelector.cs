@@ -14,7 +14,6 @@ namespace MathGame.Games.Displays
             {
                 case 1:
                     return LevelOneDisplay.Display(func, numbers);
-                    break;
                 default:
                     break;
             }

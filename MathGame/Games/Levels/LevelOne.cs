@@ -22,7 +22,7 @@ namespace MathGame.Games.Levels
             Random length = new();
             for (int i = 0; i < length.Next(2, 5); i++)
             {
-                numbers.Add(length.Next(99));
+                numbers.Add(length.Next(10));
             }
 
             int result = numbers.Sum();
@@ -37,7 +37,7 @@ namespace MathGame.Games.Levels
             Random length = new();
             for (int i = 0; i < length.Next(2, 4); i++)
             {
-                numbers.Add(length.Next(99));
+                numbers.Add(length.Next(10));
             }
 
             int head = numbers[0];
@@ -58,7 +58,7 @@ namespace MathGame.Games.Levels
             Random length = new();
             for (int i = 0; i < length.Next(2, 3); i++)
             {
-                numbers.Add(length.Next(30));
+                numbers.Add(length.Next(10));
             }
 
             int result = 1;
@@ -76,7 +76,7 @@ namespace MathGame.Games.Levels
 
             Random length = new();
             numbers.Add(length.Next(50, 101));
-            numbers.Add(length.Next(1, 19));
+            numbers.Add(length.Next(1, 10));
 
             int result = numbers[0] / numbers[1];
 

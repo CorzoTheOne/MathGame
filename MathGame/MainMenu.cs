@@ -1,4 +1,6 @@
-﻿using MathGame.Players;
+﻿using MathGame.Games;
+using MathGame.Players;
+using MathGame.Scores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +29,10 @@ namespace MathGame
                         PlayerList.DisplayPlayers();
                         break;
                     case "2":
-                        // ViewScoreBoard();
+                        ScoreBoard.ScoreboardMenu();
                         break;
                     case "3":
-                        // StartGame();
+                        Game.StartGame();
                         break;
                     case "4":
                         Environment.Exit(0);

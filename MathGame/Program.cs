@@ -6,7 +6,6 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Play player = new Play();
-        player.Round();
+        MainMenu.DisplayMainMenu();
     }
 }

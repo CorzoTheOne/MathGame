@@ -7,9 +7,9 @@ using MathGame;
 
 namespace MathGame.Players
 {
-    public class PlayerList
+    public static class PlayerList
     {
-        private static readonly List<Player>? _players;
+        public static readonly List<Player>? _players;
 
         public static void AddPlayer(Player player)
         {

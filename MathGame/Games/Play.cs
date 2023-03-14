@@ -1,6 +1,7 @@
 ﻿using MathGame.Games.Displays;
 using MathGame.Games.Levels;
 using MathGame.Players;
+using MathGame.Scores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,28 @@ namespace MathGame.Games
     {
         private int _level = 1;
         private int answer;
+        public Player _player;
+        private int _score = 0;
+        private int _lives = 3;
+        private int _round = 0;
+        public ScoreBoard _scoreBoard; 
 
-        public Play() 
+        public Play(Player player) 
         {
-
+            _player = player;
         }
 
         public void Round()
         {
+
             List<(Func<(List<int>, int)>, string)> roundQuestions = LevelSelector.ChooseLevel(_level);
 
             foreach ((Func<(List<int>, int)>, string) question in roundQuestions)
             {
+                // Displays current level and round before each question.
+                _round++;
+                Console.WriteLine($"Get ready! this is level: {_level} - Round {_round}\n");
+
                 // Unpacking the question: 
                 Func<(List<int>, int)> func = question.Item1;
                 (List<int>, int) f = func();
@@ -40,8 +51,22 @@ namespace MathGame.Games
                 StringBuilder display = LevelDisplaySelector.DisplayLevel(_level, type, numberList);
                 Console.WriteLine(display);
 
-                // Console.WriteLine(func());
+                int answer = playerAnswer();
+                if (answer == result)
+                {
+                    _score += 1;
+                    Console.WriteLine("You're Correct! Amazing!");
+                    Console.WriteLine($"Your score has increased to {_score}\n");
+                }
+                else
+                {
+                    WrongAnswer(result, answer);
+                }
+                Console.WriteLine();
             }
+
+            _level += 1;
+            Round();
         }
 
         public void QuestionTest(Func<int> func)
@@ -52,12 +77,12 @@ namespace MathGame.Games
 
         public int playerAnswer()
         {
-            Console.WriteLine("Please input your answer: \n");
             bool response = true;
             while (response)
             { 
                 try
                 {
+                    Console.WriteLine("Please input your answer: \n");
                     string input = Console.ReadLine();
                     answer = Int32.Parse(input);
                     response = false;
@@ -69,5 +94,57 @@ namespace MathGame.Games
             }
             return answer;
         }
+
+        public void WrongAnswer(int correctAnswer, int playerAnswer)
+        {
+            Console.WriteLine($"{playerAnswer} is incorrect");
+            Console.WriteLine($"The correct answer is {correctAnswer}");
+            LoseLife();
+        }
+
+        public void LoseLife()
+        {
+            _lives -= 1;
+            if (_lives == 0)
+            {
+                GameOver();
+            }
+            Console.WriteLine($"Lives remaining {_lives}");
+        }
+
+        public void GameOver()
+        {
+            Console.WriteLine("You have lost your last life!");
+            Console.WriteLine($"Your final score was {_score}");
+            Console.WriteLine($"Thank you for playing {_player._name}");
+            Console.WriteLine("You game will now be recorded! Please try again.");
+
+            // Constructing the Score type with the score from the game. 
+            Score finalScore = new Score();
+            finalScore.SetGameStats(_score);
+
+            // Giving the Score object to the Players aggregated Score property. 
+            _player.score = finalScore;
+            _player.AddScoreToPlayer(finalScore);
+            Console.WriteLine(finalScore);
+            Console.WriteLine(_player);
+            Player testPlayer = _player;
+
+            // Converting the Score to a list so it can be added to the ScoreBoard 
+            // Last breath of a dying man... 
+            List<Score> final = new List<Score>()
+            { 
+                finalScore 
+            };
+            ScoreBoard scoreBoard = ScoreBoard.GetInstance();
+
+            scoreBoard.AddScoreToScoreboard(_player, final);
+
+            // Returning the player to the Main Menu after a climaxing pause. 
+            Console.WriteLine("You will be returned to the main menu in 5 seconds");
+            Thread.Sleep(5000);
+            MainMenu.DisplayMainMenu();
+        }
+
     }
 }

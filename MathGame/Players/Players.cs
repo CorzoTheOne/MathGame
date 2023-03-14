@@ -13,7 +13,7 @@ namespace MathGame.Players
         public string _name { get; set; }
         public int _id;
         public DateTime _createTime { get; set; }
-        public Score? _score { get; set; }
+        public Score score;
 
         public List<Score> _playerScores { get; set; }
         public int? _highScore { get; set; }
@@ -23,25 +23,41 @@ namespace MathGame.Players
             _name = name;
             _id += 1;
             _createTime = DateTime.Now;
+            _playerScores = new List<Score>();
         } 
 
         public static Player SelectPlayer(string name)
         {
             List<Player> players = PlayerList.GetPlayers();
-            for (int i = 0; i < players.Count; i++)
+            try
             {
-                if (name == players[i]._name)
+                if (players.Count >= 1)
                 {
-                    return players[i];               
+                    for (int i = 0; i < players.Count; i++)
+                    {
+                        if (name == players[i]._name)
+                        {
+                            return players[i];
+                        }
+                    }
                 }
+                return CreatePlayer(name);
             }
-            return CreatePlayer(name);
+            catch (NullReferenceException)
+            {
+                return CreatePlayer(name);
+            }
         }
 
         private static Player CreatePlayer(string name)
         {
             Player player = new Player(name);
             return player; 
+        }
+
+        public void AddScoreToPlayer(Score score)
+        {
+            _playerScores.Add(score);
         }
 
     }
