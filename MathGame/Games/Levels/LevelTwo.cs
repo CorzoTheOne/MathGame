@@ -9,7 +9,7 @@ namespace MathGame.Games.Levels
 {
     internal class LevelTwo : ILevelMaker
     {
-        public static int RectCalculateArea() 
+        public static (List<int>, int) RectCalculateArea() 
         {
             List<int> sides = new List<int>();
 
@@ -20,9 +20,9 @@ namespace MathGame.Games.Levels
             Display("rectArea", sides);
 
             int result = sides[0] * sides[1];
-            return result;
+            return (sides, result);
         }
-        public static int RectCalculateCircumference() 
+        public static (List<int>, int) RectCalculateCircumference() 
         {
             List<int> sides = new List<int>();
 
@@ -33,9 +33,9 @@ namespace MathGame.Games.Levels
             Display("rectCircum", sides);
 
             int result = (sides[0] + sides[1]) * 2;
-            return result;
+            return (sides, result);
         }
-        public static int TriangleCalculateArea() 
+        public static (List<int>, int) TriangleCalculateArea() 
         {
             List<int> values = new List<int>();
 
@@ -49,9 +49,9 @@ namespace MathGame.Games.Levels
             Display("TriArea", values);
 
             int result = triBase * triHeight / 2;
-            return result;
+            return (values, result);
         }
-        public static int TriangleCalculateCircumference() 
+        public static (List<int>, int) TriangleCalculateCircumference() 
         {
             List<int> sides = new List<int>();
 
@@ -63,7 +63,7 @@ namespace MathGame.Games.Levels
             Display("TriCircum", sides);
 
             int result = sides.Sum();
-            return result;
+            return (sides, result);
         }
         public static void Display(string func, List<int> numbers)
         { 
@@ -77,20 +77,20 @@ namespace MathGame.Games.Levels
                     Console.WriteLine($"The rectangle has height {numbers[0]} and width {numbers[1]}.");
                     Console.WriteLine($"What is the area? (({numbers[0]} + {numbers[1]}) * 2 = ??)");
                     break;
-                case ("TriArea"):
+                case ("triArea"):
                     Console.WriteLine($"The triangle has base: {numbers[0]}, and height: {numbers[1]}.");
                     Console.WriteLine($"What is the Area? (Base * Height * 1/2) = ??");
                     break;
-                case ("TriCircum"):
+                case ("triCircum"):
                     Console.WriteLine($"The triangle has sides: {numbers[0]}, {numbers[1]}, {numbers[2]}");
                     Console.WriteLine($"What is its circumference? (side + side + side");
                     break;
             }
         }
 
-        public static List<Func<int>> PrepareQuestions() 
+        public static List<(Func<(List<int>, int)>, string)> PrepareQuestions() 
         {
-            List<Func<int>> questions = new();
+            List<(Func<(List<int>, int)>, string)> questions = new();
             Random random = new();
 
             for (int i = 0; i < 10; i++)
@@ -99,16 +99,16 @@ namespace MathGame.Games.Levels
                 switch (t)
                 {
                     case 1:
-                        questions.Add(RectCalculateArea);
+                        questions.Add((RectCalculateArea, "rectArea"));
                         break;
                     case 2:
-                        questions.Add(RectCalculateCircumference);
+                        questions.Add((RectCalculateCircumference, "rectCircum"));
                         break;
                     case 3:
-                        questions.Add(TriangleCalculateArea);
+                        questions.Add((TriangleCalculateArea, "triArea"));
                         break;
                     case 4:
-                        questions.Add(TriangleCalculateCircumference);
+                        questions.Add((TriangleCalculateCircumference, "triCircum"));
                         break;
                 }
             }

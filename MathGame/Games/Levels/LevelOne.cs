@@ -15,7 +15,7 @@ namespace MathGame.Games.Levels
     /// </summary>
     public class LevelOne : ILevelMaker
     {
-        public static int Add()
+        public static (List<int>, int) Add()
         {
             List<int> numbers = new();
 
@@ -24,14 +24,13 @@ namespace MathGame.Games.Levels
             {
                 numbers.Add(length.Next(99));
             }
-            Display("add", numbers);
 
             int result = numbers.Sum();
 
-            return result;
+            return (numbers, result);
         }
 
-        public static int Subtract()
+        public static (List<int>, int) Subtract()
         {
             List<int> numbers = new();
 
@@ -40,20 +39,19 @@ namespace MathGame.Games.Levels
             {
                 numbers.Add(length.Next(99));
             }
-            Display("subtract", numbers);
 
             int head = numbers[0];
-            List<int> rest = numbers.GetRange(1, numbers.Count - 2);
+            List<int> rest = numbers.GetRange(1, numbers.Count - 1);
             for (int i = 0; i < rest.Count(); i++)
             {
                 head = head - rest[i];
             }
 
-            return head;
+            return (numbers, head);
         }
 
 
-        public static int Multiply() 
+        public static (List<int>, int) Multiply() 
         {
             List<int> numbers = new();
 
@@ -62,7 +60,6 @@ namespace MathGame.Games.Levels
             {
                 numbers.Add(length.Next(30));
             }
-            Display("multiply", numbers);
 
             int result = 1;
             for (int i = 0; i < numbers.Count; i++)
@@ -70,22 +67,20 @@ namespace MathGame.Games.Levels
                 result = result * numbers[i];
             }
 
-            return result;
+            return (numbers, result);
         }
 
-        public static int Divide()
+        public static (List<int>, int) Divide()
         {
             List<int> numbers = new();
 
             Random length = new();
             numbers.Add(length.Next(50, 101));
             numbers.Add(length.Next(1, 19));
-            Console.WriteLine("Divide without including remainders:\n");
-            Display("divide", numbers);
 
             int result = numbers[0] / numbers[1];
 
-            return result;
+            return (numbers, result);
         }
 
         /// <summary>
@@ -93,67 +88,32 @@ namespace MathGame.Games.Levels
         /// </summary>
         /// <param name="func">string representation of the function fx. "add"</param>
         /// <param name="numbers">The list with values that are displayed in with correct formatting. </param>
-        private static void Display(string func, List<int> numbers)
-        {
-            string type;
-            switch (func)
-            {
-                case "add":
-                    type = "+";
-                    break;
-                case "subtract":
-                    type = "-";
-                    break;
-                case "multiply":
-                    type = "*";
-                    break;
-                case "divide":
-                    type = "/";
-                    break;
-                default:
-                    type = "ERROR";
-                    break;
-            }
-            StringBuilder sb = new("Calculate: ");
-            for (int i = 0; i < numbers.Count; i++)
-            {
-                if (numbers.Count - i == 1)
-                {
-                    sb.Append($"{numbers[i]} = ??");
-                }
-                else
-                {
-                    sb.Append($"{numbers[i]} {type} ");
-                }
-            }
-            Console.WriteLine(sb);
 
-
-        }
         /// <summary>
         /// PrepareQuestions - Randomly selects functions that return integers to add to the list. 
         /// Called by Play(). 
         /// </summary>
         /// <returns>return a list of 10 functions that return integers.</returns>
-        public static List<Func<int>> PrepareQuestions()
+        public static List<(Func<(List<int>, int)>, string)> PrepareQuestions()
         {
-            List<Func<int>> _questions = new List<Func<int>>();
+            List<(Func<(List<int>, int)>, string)> _questions = new();
             for (int i = 0; i < 10; i++)
             {
                 Random selector = new(); 
                 switch (selector.Next(1, 5))
                 {
                     case 1:
-                        _questions.Add(Add);
+                        _questions.Add((Add, "add"));
+
                         break;
                     case 2:
-                        _questions.Add(Subtract);
+                        _questions.Add((Subtract, "subtract"));
                         break;
                     case 3: 
-                        _questions.Add(Multiply);
+                        _questions.Add((Multiply, "multiply"));
                         break;
                     case 4:
-                        _questions.Add(Divide);
+                        _questions.Add((Divide, "divide"));
                         break;
                 }
             }

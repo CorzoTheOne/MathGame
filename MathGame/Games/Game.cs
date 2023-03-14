@@ -24,7 +24,7 @@ namespace MathGame.Games
             string player_name = Console.ReadLine();
             Player player = Player.SelectPlayer(player_name);
 
-            Play play = new Play(player);
+            Play play = new Play();
 
         }
     }

@@ -8,9 +8,9 @@ namespace MathGame.Games.Levels
 {
     public class LevelSelector
     {
-        public List<Func<int>> ChooseLevel(int level)
+        public static List<(Func<(List<int>, int)>, string)> ChooseLevel(int level)
         {
-            List<Func<int>> questions = new List<Func<int>>();
+            List<(Func<(List<int>, int)>, string)> questions = new();
             switch (level)
             {
                 case 1:
