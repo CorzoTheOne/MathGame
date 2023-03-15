@@ -27,5 +27,9 @@ namespace MathGame.Scores
             _score = score;
             _creationTime = DateTime.Now;
         }
+        public (int, DateTime) GetScore()
+        {
+            return (_score, _creationTime);
+        }
     }
 }

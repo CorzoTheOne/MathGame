@@ -12,7 +12,8 @@ namespace MathGame.Games
     {
         /// <summary>
         /// Selects/Creates the player
-        /// Creates an instance of the play session. 
+        /// Creates an instance of the play session with the selected player. 
+        /// Then starts the game with that player.
         /// </summary>
         public static void StartGame()
         {

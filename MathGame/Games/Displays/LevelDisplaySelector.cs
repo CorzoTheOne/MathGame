@@ -8,6 +8,14 @@ namespace MathGame.Games.Displays
 {
     public static class LevelDisplaySelector
     {
+        /// <summary>
+        /// Handles the display selection for each Level. 
+        /// TODO : Add display for LevelTwo. 
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="func"></param>
+        /// <param name="numbers"></param>
+        /// <returns></returns>
         public static StringBuilder DisplayLevel(int level, string func, List<int> numbers)
         {
             switch (level)

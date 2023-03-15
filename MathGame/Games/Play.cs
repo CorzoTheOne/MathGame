@@ -12,7 +12,10 @@ namespace MathGame.Games
 {
     /// <summary>
     /// The Play class runs the game - loads the questions and handles game logic. 
-    ///     
+    ///     Input:
+    ///         Player object
+    ///     Output:
+    ///         Player, updated with an aggregated Score object, specific to the "play-session". 
     /// </summary>
     public class Play
     {
@@ -29,6 +32,16 @@ namespace MathGame.Games
             _player = player;
         }
 
+        /// <summary>
+        /// Handles game flow. 
+        ///     Based on the current level, creates a list of questions to be asked doing the game. 
+        ///         This is handled by calls to the 'LevelSelector' and 'LevelDisplaySelector' classes. 
+        ///     Class also handles simple game logic - like tracking the rounds, score and lives of the player. 
+        ///   End of game logic:
+        ///     Creates an instance of the Score object, an aggregate of the player class.
+        ///     Then constructs (or calls - if already constructed) the instance of the ScoreBoard (See ScoreBoard.cs)
+        ///     
+        /// </summary>
         public void Round()
         {
 
@@ -67,12 +80,6 @@ namespace MathGame.Games
 
             _level += 1;
             Round();
-        }
-
-        public void QuestionTest(Func<int> func)
-        {
-
-            Console.WriteLine(func());
         }
 
         public int playerAnswer()
@@ -126,8 +133,6 @@ namespace MathGame.Games
             // Giving the Score object to the Players aggregated Score property. 
             _player.score = finalScore;
             _player.AddScoreToPlayer(finalScore);
-            Console.WriteLine(finalScore);
-            Console.WriteLine(_player);
             Player testPlayer = _player;
 
             // Converting the Score to a list so it can be added to the ScoreBoard 

@@ -9,6 +9,7 @@ namespace MathGame.Scores
 {
     public class ScoreBoard
     { 
+
         public Dictionary<Player, List<Score>> _allPlayerScoreboard;
         private static ScoreBoard uniqueInstance; 
 
@@ -32,11 +33,10 @@ namespace MathGame.Scores
 
         /// <summary>
         /// Display the scoreboard menu 
-        ///     1. takes player name and shows that players scores
-        ///     2. displays the highscores
         /// </summary>
         public static void ScoreboardMenu()
         {
+
             Console.Clear();
             Console.WriteLine("Welcome to the Scoreboard menu, you have the following options:");
             Console.WriteLine("(1) to view scoreboard of all games played");
@@ -58,25 +58,43 @@ namespace MathGame.Scores
                 MainMenu.DisplayMainMenu();
             }
         }
+
+        /// <summary>
+        /// Displays all games currently stored in the "database"
+        /// </summary>
         public static void DisplayScoreboard()
         {
+            Console.Clear();
+            Console.WriteLine("Player Games Menu\n");
+
+            // Make an instance of the scoreboard in case the user loads it before any games has been played.
+            ScoreBoard scoreBoard = GetInstance();
+
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("  Name       | Score      | Time      ");
             foreach (KeyValuePair<Player, List<Score>> kvp in uniqueInstance._allPlayerScoreboard)
             {
-                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                // Unpacking the Player name and the Score object stored in the list.
+                string name = kvp.Key._name;
+                Score playScore = kvp.Value[0];
+                (int, DateTime) stats = playScore.GetScore();
+                int score = stats.Item1;
+                DateTime date = stats.Item2;
+
+
+                Console.WriteLine(String.Format("  {0, -10} | {1, -10} | {2, -10}", name, score, date));
             }
         }
 
+        /// <summary>
+        /// Called by Play.GameOver() to add the player and their score to the ScoreBoard.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="score"></param>
         public void AddScoreToScoreboard(Player player, List<Score>? score)
         {
             Console.WriteLine(_allPlayerScoreboard);
             uniqueInstance._allPlayerScoreboard.Add(player, score);
-        }
-        /// <summary>
-        /// TODO : Find a way to store/get the 10 highest scores from the scoreboard
-        /// TODO : Probably just find the 10 highest and display them separately.
-        /// </summary>
-        public static void DisplayHighScores()
-        {
         }
     }
 }

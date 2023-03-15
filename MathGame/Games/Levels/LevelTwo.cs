@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MathGame.Games.Levels
 {
+    // TODO : Move the display logic to the LevelDisplaySelector instead. 
     internal class LevelTwo : ILevelMaker
     {
         public static (List<int>, int) RectCalculateArea() 
