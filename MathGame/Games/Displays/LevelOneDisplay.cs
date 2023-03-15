@@ -8,13 +8,6 @@ namespace MathGame.Games.Displays
 {
     public static class LevelOneDisplay
     {
-/*        public string type;
-        public List<int> numbers;
-
-        public LevelOneDisplay(string type, List<int> numbers)
-        { 
-        }*/
-
         public static StringBuilder Display(string func, List<int> numbers)
         {
             string type;

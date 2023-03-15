@@ -18,8 +18,6 @@ namespace MathGame.Games.Levels
             sides.Add(number.Next(5, 20));
             sides.Add(number.Next(5, 10));
 
-            Display("rectArea", sides);
-
             int result = sides[0] * sides[1];
             return (sides, result);
         }
@@ -30,8 +28,6 @@ namespace MathGame.Games.Levels
             Random number = new();
             sides.Add(number.Next(5, 20));
             sides.Add(number.Next(5, 10));
-
-            Display("rectCircum", sides);
 
             int result = (sides[0] + sides[1]) * 2;
             return (sides, result);
@@ -47,8 +43,6 @@ namespace MathGame.Games.Levels
             values.Add(triBase);
             values.Add(triHeight);
 
-            Display("TriArea", values);
-
             int result = triBase * triHeight / 2;
             return (values, result);
         }
@@ -61,33 +55,10 @@ namespace MathGame.Games.Levels
             sides.Add(number.Next(5, 20));
             sides.Add(number.Next(5, 20));
 
-            Display("TriCircum", sides);
-
             int result = sides.Sum();
             return (sides, result);
         }
-        public static void Display(string func, List<int> numbers)
-        { 
-            switch (func)
-            {
-                case ("rectArea"):
-                    Console.WriteLine($"The rectangle has height {numbers[0]} and width {numbers[1]}.");
-                    Console.WriteLine($"What is the area? ({numbers[0]} * {numbers[1]} = ??)");
-                    break;
-                case ("rectCircum"):
-                    Console.WriteLine($"The rectangle has height {numbers[0]} and width {numbers[1]}.");
-                    Console.WriteLine($"What is the area? (({numbers[0]} + {numbers[1]}) * 2 = ??)");
-                    break;
-                case ("triArea"):
-                    Console.WriteLine($"The triangle has base: {numbers[0]}, and height: {numbers[1]}.");
-                    Console.WriteLine($"What is the Area? (Base * Height * 1/2) = ??");
-                    break;
-                case ("triCircum"):
-                    Console.WriteLine($"The triangle has sides: {numbers[0]}, {numbers[1]}, {numbers[2]}");
-                    Console.WriteLine($"What is its circumference? (side + side + side");
-                    break;
-            }
-        }
+
 
         public static List<(Func<(List<int>, int)>, string)> PrepareQuestions() 
         {

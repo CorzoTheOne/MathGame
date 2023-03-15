@@ -22,10 +22,22 @@ namespace MathGame.Games.Displays
             {
                 case 1:
                     return LevelOneDisplay.Display(func, numbers);
+                case 2:
+                    return LevelTwoDisplay.Display(func, numbers);
                 default:
                     break;
             }
             return new StringBuilder();
+        }
+
+        public static void DisplayActiveQuestion()
+        {
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+        }
+        public static void DisplayInactiveQuestion()
+        {
+
         }
     }
 }

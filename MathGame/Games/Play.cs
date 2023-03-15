@@ -47,11 +47,14 @@ namespace MathGame.Games
 
             List<(Func<(List<int>, int)>, string)> roundQuestions = LevelSelector.ChooseLevel(_level);
 
+
+
             foreach ((Func<(List<int>, int)>, string) question in roundQuestions)
             {
                 // Displays current level and round before each question.
                 _round++;
-                Console.WriteLine($"Get ready! this is level: {_level} - Round {_round}\n");
+                Console.WriteLine("######################################################\n");
+                Console.WriteLine($"Get ready! this is: level: {_level} - Round: {_round}\n");
 
                 // Unpacking the question: 
                 Func<(List<int>, int)> func = question.Item1;
@@ -69,13 +72,15 @@ namespace MathGame.Games
                 {
                     _score += 1;
                     Console.WriteLine("You're Correct! Amazing!");
-                    Console.WriteLine($"Your score has increased to {_score}\n");
+                    Console.WriteLine($"Your score has increased to {_score}");
                 }
                 else
                 {
                     WrongAnswer(result, answer);
                 }
                 Console.WriteLine();
+                Thread.Sleep(500);
+
             }
 
             _level += 1;
@@ -89,8 +94,9 @@ namespace MathGame.Games
             { 
                 try
                 {
-                    Console.WriteLine("Please input your answer: \n");
+                    Console.Write("Please input your answer: ");
                     string input = Console.ReadLine();
+                    Console.WriteLine();
                     answer = Int32.Parse(input);
                     response = false;
                 }
@@ -104,7 +110,7 @@ namespace MathGame.Games
 
         public void WrongAnswer(int correctAnswer, int playerAnswer)
         {
-            Console.WriteLine($"{playerAnswer} is incorrect");
+            Console.WriteLine($"\n{playerAnswer} is incorrect");
             Console.WriteLine($"The correct answer is {correctAnswer}");
             LoseLife();
         }
